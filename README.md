@@ -65,7 +65,7 @@ Esse projeto usa Autenticação JWT
 ## Executar filas
 php artisan queue:work
 
-## Testes
+# Testes
     /tests
 
      Comando para executar os testes  
@@ -73,6 +73,19 @@ php artisan queue:work
     php artisan test --filter {method}
 
 
+## Receber email do job com a ferramenta mailtrap
+    Pra isso será necessário uma conta no https://mailtrap.io/
+
+    1. Faça sua inscrição na ferramenta
+    2. Login com sua conta
+    3. Na área de projetos no mailtrap crie um inbox para receber suas mensagens (Fica bem acima da tabela de lista em um botão azul)
+        OBS: (Add inbox)
+    4. Nomeie seu inbox e clique na engrenagem para ter as configurações
+    5. Em Integrations escolha a aplicação PHP -> Laravel
+    6 Copie e cole as variáveis de ambiente no .env
+        OBS: Já retirei essas variáveis que vem como padrão
+    
+    Basta startar o projeto e realizar os testes.
 
 # Comando importantes Caso haja necessidade de limpar informações do servidor.
     php artisan config:clear
