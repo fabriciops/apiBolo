@@ -29,11 +29,10 @@ class CakeObserver
      */
     public function updated(Cake $cake)
     {
-        $emails = $cake->subscriptionsNotification;
-        Log::info(json_decode($emails));
-        foreach ($emails as $key) {
-            NotificationEmail::dispatch($key->email, $cake);
-        }
+        // foreach ($this->emails as $key) {
+        //     NotificationEmail::dispatch($key['email'], $cake);
+        // }
+        
     }
 
     /**

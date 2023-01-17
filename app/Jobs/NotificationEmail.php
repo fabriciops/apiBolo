@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Cake;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -22,10 +23,11 @@ class NotificationEmail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($email, $cake)
+    public function __construct($email,Cake $cake)
     {
         $this->email = $email;
         $this->cake = $cake;
+        
     }
 
     /**
@@ -35,15 +37,10 @@ class NotificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        $data = [
-            'email' => $this->email,
-            'cake' => $this->cake
-        ];
-
-        Mail::send('emails.cakeNotification', ['data' => $data], function($message) {
-            $message->to('fabriciopps19@gmail.com', 'teste')->subject
+        Mail::send('emails.cakeNotification', ['data' => $this->cake], function($message) {
+            $message->from('fabriciopps19@gmail.com','Eu mesmo');
+            $message->to($this->email, 'teste')->subject
                 ('CheckList');
-            $message->from('CheckList.com','Eu mesmo');
         });
     }
 }

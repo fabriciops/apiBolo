@@ -37,7 +37,8 @@ class SubscriptionCakeController extends Controller
             event(new CakeEvents($cake));
             return response()->json(
                 ['mensagem' => 'Solicitação realizada com sucesso. Sempre lhe deixaremos informado sobre esse item'],200
-            );
+            )
+            ->setStatusCode(201);
         };
     }
 
@@ -62,6 +63,6 @@ class SubscriptionCakeController extends Controller
 
         return response()->json([
             'message' => 'A inscrição foi removida com sucesso.',
-        ]);
+        ])->setStatusCode(200);
     }
 }

@@ -12,9 +12,12 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\V1\CakesController\CakeStoreRequest;
+use App\Http\Requests\Api\V1\CakesController\CakeUpdateRequest;
 use App\Http\Resources\CakeResource;
+use App\Jobs\NotificationEmail;
 use App\Models\Cake;
 use Illuminate\Http\JsonResponse;
+
 
 class CakeController extends Controller
 {
@@ -54,12 +57,15 @@ class CakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id):JsonResponse
+    public function show(Cake $cake):JsonResponse
     {
         try {
-            $data = Cake::find($id);
-            $data->load('subscriptionsNotification');
-            return CakeResource::make($data)->response();
+            if (!empty($cake)) {
+                $cake->load('subscriptionsNotification');
+                return CakeResource::make($cake)->response()->setStatusCode(201);
+            }
+            return response()->json(['mensagem' => 'Não foi possível encontrar esse item'],404);
+
         } catch (\Throwable $th) {
             return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],400);
 
@@ -73,16 +79,26 @@ class CakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CakeStoreRequest $request, $id)
+    public function update(CakeUpdateRequest $request, $id)
     {
         try {
             $cake = Cake::find($id);
-            $cake->update($request->validated());
-            $cake->load('subscriptionsNotification');
-            return (new CakeResource($cake))->response();
+            
+            if (!empty($cake)) {
+                $cake->update($request->validated());
+                $cake->load('subscriptionsNotification');
+                $emails = $cake->subscriptionsNotification->toArray();
+                
+                foreach ($emails as $key) {
+                    
+                    NotificationEmail::dispatch($key['email'], $cake);
+                }
+                return (new CakeResource($cake))->response();
+            }
+            return response()->json(['mensagem' => 'Não foi possível encontrar esse item'],401);
+            
         }catch (\Throwable $th) {
             return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],400);
-
         }
     }
 
@@ -97,7 +113,7 @@ class CakeController extends Controller
         try {
             $cake->subscriptionsNotification()->delete();
             $cake->delete();
-            return response()->json();
+            return response()->json('Item deletado com sucesso',200);
         }catch (\Throwable $th) {
             return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],400);
         }

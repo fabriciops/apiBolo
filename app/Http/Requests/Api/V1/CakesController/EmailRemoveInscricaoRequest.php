@@ -1,14 +1,10 @@
 <?php
 
-
-
 namespace App\Http\Requests\Api\V1\CakesController;
 
 use Illuminate\Foundation\Http\FormRequest;
-use OpenApi\Attributes as OA;
 
-
-class CakeUpdateRequest extends FormRequest
+class EmailRemoveInscricaoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +19,13 @@ class CakeUpdateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
-            'price' => 'numeric',
-            'weight_in_grams' => 'numeric',
-            'quantity' => 'integer',
+            'email' => 'required|email',
+            'bolo_id' => 'required|email',
         ];
     }
 }

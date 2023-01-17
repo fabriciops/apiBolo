@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(Request $request){
-
         try {
             $login  = $request->only('email', 'password');
             $token = Auth::attempt($login);
