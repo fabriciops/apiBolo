@@ -1,4 +1,4 @@
-# Projeto para sênior backend PHP (v1.1) CheckList
+# Projeto API de CRUD bolo com disparo de email
 Esse projeto usa Autenticação JWT
 
 * É necessário fazer login para obter a hash para explorar os serviços da aplicação.
