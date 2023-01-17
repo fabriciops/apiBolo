@@ -10,6 +10,11 @@ Esse projeto usa Autenticação JWT
          composer install 
 
     2 - É necessário a criação de um banco de dados
+        
+        Sugestão de nome: checkList_cake
+        OBS: caso utilize outro nome lembre-se de mudar as credências de acesso para todar o projeto
+        file: /phpunit.xml 
+        file: .env
 
         Crie um banco de dados Mysql e coloque as credenciais no arquivo .env que está na raiz do projeto
 
