@@ -99,7 +99,7 @@ kill -9 318937
     composer require laravel/ui
 
 # implement erro, colar o namespace direto no VENDOR/JWT para instanciar na aplicação
-    doctor-test/vendor/tymon/jwt-auth/src/Contracts/JWTSubject.php
+   {repositorio}/vendor/tymon/jwt-auth/src/Contracts/JWTSubject.php
 
 * Importante ressaltar que a lib JWT tem alguns erros quando aplicado as configurações. O interessante que  composer
 Parece não consegui registrar o serviço na aplicação, isso é um ponto a ser a explorar para demais projetos futuros.
