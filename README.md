@@ -35,7 +35,7 @@ Esse projeto usa Autenticação JWT
         php artisan db:seed --class=CakeSeeder
 
         php artisan db:seed --class=CakeEmailSeeder
-# Caso haja algum problema com a migrate no diretório database há um arquivo sql que basta ser executado diretamente na sua ferramente de banco de dados
+# Caso haja algum problema com a migrate, no diretório database há um arquivo sql que basta ser executado diretamente na sua ferramente de banco de dados
     file:  query.sql 
 
     
