@@ -4,10 +4,6 @@ Esse projeto usa Autenticação JWT
 * É necessário fazer login para obter a hash para explorar os serviços da aplicação.
     ip:0000/api/v1/login
 
-*  Link da documentação
-
-    ip:000/api/documentation
-
 # Iniciar o projeto
     1 - Ao baixar o projeto rode o seguinte comando
     
@@ -89,6 +85,19 @@ ps -ef | grep php
 
 Mata o processo
 kill -9 318937
+
+## Itens que serão implementados
+    *  Link da documentação 
+
+    ip:000/api/documentation
+    
+    branch: documentacao
+
+    * Camada Repository Pattners
+    
+    branch: patterns
+
+
 
 
 ## Bug durante o desenvolvimento
