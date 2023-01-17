@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/swagger', [SwaggerController::class]);
+
 Route::get('/unauthenticated', function(){
     return ['error' => 'Usuario não está logado'];
 })->name('login');

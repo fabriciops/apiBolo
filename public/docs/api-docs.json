@@ -306,8 +306,8 @@
                         "format": "float",
                         "example": 5
                     },
-                    "weight_in_grams": {
-                        "title": "weight_in_grams",
+                    "weight": {
+                        "title": "weight",
                         "type": "integer",
                         "format": "int32",
                         "example": 500
@@ -347,8 +347,8 @@
                         "format": "float",
                         "example": 5
                     },
-                    "weight_in_grams": {
-                        "title": "weight_in_grams",
+                    "weight": {
+                        "title": "weight",
                         "type": "integer",
                         "format": "int32",
                         "example": 500
@@ -561,7 +561,7 @@
                         },
                         "example": {
                             "name": "Bolo de Chocolate",
-                            "weight_in_grams": 1200,
+                            "weight": 1200,
                             "price": 120,
                             "quantity": 30
                         }
@@ -592,7 +592,7 @@
                         },
                         "example": {
                             "name": "Bolo de Chocolate",
-                            "weight_in_grams": 1200,
+                            "weight": 1200,
                             "price": 120,
                             "quantity": 30
                         }

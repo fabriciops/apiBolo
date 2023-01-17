@@ -4,6 +4,10 @@ Esse projeto usa Autenticação JWT
 * É necessário fazer login para obter a hash para explorar os serviços da aplicação.
     ip:0000/api/v1/login
 
+*  Link da documentação
+
+    ip:000/api/documentation
+
 # Iniciar o projeto
     1 - Ao baixar o projeto rode o seguinte comando
     
