@@ -16,11 +16,19 @@ use App\Http\Requests\Api\V1\CakesController\CakeUpdateRequest;
 use App\Http\Resources\CakeResource;
 use App\Jobs\NotificationEmail;
 use App\Models\Cake;
+use App\Repository\CakeRepository;
 use Illuminate\Http\JsonResponse;
 
 
 class CakeController extends Controller
 {
+    private $cakeRepository;
+
+    public function __construct(CakeRepository $cakeRepository)
+    {
+        $this->cakeRepository = $cakeRepository;
+        
+    }
     /**
      * @OA\Get(
      *      path="/cakes",
@@ -46,7 +54,7 @@ class CakeController extends Controller
     public function index()
     {
         try {
-            return CakeResource::collection(Cake::with('subscriptionsNotification')->paginate(20))->response()
+            return $this->cakeRepository->all()->response()
             ->setStatusCode(200);
             
         } catch (\Throwable $th) {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Repository\CakeRepository;
 
 return [
 
@@ -163,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\CakeProvider::class,
+        App\Providers\CakeRepositoryServicesProvider::class,
 
         
 

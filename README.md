@@ -84,6 +84,8 @@ php artisan queue:work
     php artisan view:clear
     php artisan route:clear
 
+    php artisan clear-compiled
+
 # Verifica o processo que está rodando
 ps -ef | grep php
 
