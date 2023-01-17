@@ -7,16 +7,13 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-class Controller extends BaseController
-{
-
     /**
      * @OA\Info(
      *      version="1.0.0",
-     *      title="Laravel OpenApi Demo Documentation",
-     *      description="L5 Swagger OpenApi description",
+     *      title="API de Bolo",
+     *      description="Projeto de cadastro de bolo e disparo de email",
      *      @OA\Contact(
-     *          email="admin@admin.com"
+     *          email="fabriciopps19@gmail.com"
      *      ),
      *      @OA\License(
      *          name="Apache 2.0",
@@ -26,15 +23,18 @@ class Controller extends BaseController
      *
      * @OA\Server(
      *      url=L5_SWAGGER_CONST_HOST,
-     *      description="Demo API Server"
+     *      description="API V1"
      * )
 
      *
      * @OA\Tag(
-     *     name="Projects",
-     *     description="API Endpoints of Projects"
+     *     name="Cake",
+     *     description="API Endpoints"
      * )
      */
     
+
+class Controller extends BaseController
+{
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

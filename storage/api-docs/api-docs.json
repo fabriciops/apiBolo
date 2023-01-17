@@ -1,209 +1,48 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Checklist Fácil - API Bolos",
-        "description": "Microserviço para crud de bolos e envio de emails para assinantes.",
+        "title": "API de Bolo",
+        "description": "Projeto de cadastro de bolo e disparo de email",
+        "contact": {
+            "email": "fabriciopps19@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://localhost/api/v1/",
-            "description": "URL base da API"
+            "url": "http://my-default-host.com",
+            "description": "API V1"
         }
     ],
     "paths": {
-        "/cakes/{cake}/subscriptions": {
-            "post": {
-                "tags": [
-                    "Assinar bolos"
-                ],
-                "summary": "Cria uma nova inscrição para o bolo",
-                "description": "Cria uma nova inscrição para o bolo",
-                "operationId": "createCakeSubscription",
-                "parameters": [
-                    {
-                        "parameter": "cake",
-                        "name": "cake",
-                        "in": "path",
-                        "description": "ID do bolo",
-                        "required": true
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#/components/requestBodies/CakeSubscriptionStoreRequest"
-                },
-                "responses": {
-                    "202": {
-                        "$ref": "#/components/responses/ProcessingCakeSubscriptionResponse"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/UnprocessableEntity"
-                    },
-                    "404": {
-                        "description": "Bolo não encontrado."
-                    }
-                }
-            }
-        },
-        "/cakes/{cake}/subscriptions/{subscription}": {
-            "delete": {
-                "tags": [
-                    "Assinar bolos"
-                ],
-                "summary": "Remove a inscrição para o bolo",
-                "description": "Remove a inscrição para o bolo",
-                "operationId": "deleteCakeSubscription",
-                "parameters": [
-                    {
-                        "parameter": "cake",
-                        "name": "cake",
-                        "in": "path",
-                        "description": "ID do bolo",
-                        "required": true
-                    },
-                    {
-                        "parameter": "subscription",
-                        "name": "subscription",
-                        "in": "path",
-                        "description": "ID da inscrição",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/CakeSubscriptionDeletedResponse"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/CakeSubscriptionNotFoundResponse"
-                    }
-                }
-            }
-        },
-        "/cakes": {
+        "/api/v1/cake": {
             "get": {
                 "tags": [
-                    "Bolos"
+                    "Cake"
                 ],
-                "summary": "Obtém todos os bolos disponíveis paginados.",
-                "description": "Obtém todos os bolos disponíveis paginados.",
-                "operationId": "getCakes",
+                "summary": "Get list of Cake",
+                "description": "Returns list of Cake",
+                "operationId": "getCakesList",
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/CakeItemCollectionResponse"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Bolos"
-                ],
-                "summary": "Cria um novo bolo",
-                "description": "Cria um novo bolo",
-                "operationId": "createCake",
-                "requestBody": {
-                    "$ref": "#/components/requestBodies/CakeStoreRequest"
-                },
-                "responses": {
-                    "201": {
-                        "$ref": "#/components/responses/CakeItemResponse"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/UnprocessableEntity"
-                    }
-                }
-            }
-        },
-        "/cakes/{cake}": {
-            "get": {
-                "tags": [
-                    "Bolos"
-                ],
-                "summary": "Obtém um bolo pelo ID.",
-                "description": "Obtém um bolo pelo ID.",
-                "operationId": "getCakeById",
-                "parameters": [
-                    {
-                        "parameter": "cake",
-                        "name": "cake",
-                        "in": "path",
-                        "description": "ID do bolo.",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CakeResource"
+                                }
+                            }
                         }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/CakeItemResponse"
                     },
-                    "404": {
-                        "description": "Bolo não encontrado"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Bolos"
-                ],
-                "summary": "Deleta um bolo pelo ID.",
-                "description": "Deleta um bolo pelo ID. A ação também deleta os assinantes do bolo.",
-                "operationId": "deleteCakeById",
-                "parameters": [
-                    {
-                        "parameter": "cake",
-                        "name": "cake",
-                        "in": "path",
-                        "description": "ID do bolo.",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Bolo deletado"
+                    "401": {
+                        "description": "Unauthenticated"
                     },
-                    "404": {
-                        "description": "Bolo não encontrado"
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "Bolos"
-                ],
-                "summary": "Atualiza um bolo pelo ID. Apenas os campos que forem enviados serão atualizados.",
-                "description": "Atualiza um bolo pelo ID. Apenas os campos que forem enviados serão atualizados.",
-                "operationId": "updateCakeById",
-                "parameters": [
-                    {
-                        "parameter": "cake",
-                        "name": "cake",
-                        "in": "path",
-                        "description": "ID do bolo.",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#/components/requestBodies/CakeUpdateRequest"
-                },
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/CakeItemResponse"
-                    },
-                    "404": {
-                        "description": "Bolo não encontrado"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/UnprocessableEntity"
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
             }
@@ -211,394 +50,28 @@
     },
     "components": {
         "schemas": {
-            "PaginationLinks": {
-                "description": "Pagination links",
-                "properties": {
-                    "first": {
-                        "description": "First page",
-                        "type": "string",
-                        "format": "uri",
-                        "example": "http://localhost/api/v1/cakes?page=1"
-                    },
-                    "last": {
-                        "description": "Last page",
-                        "type": "string",
-                        "format": "uri",
-                        "example": "http://localhost/api/v1/cakes?page=2"
-                    },
-                    "next": {
-                        "description": "Next page",
-                        "type": "string",
-                        "format": "uri",
-                        "example": "http://localhost/api/v1/cakes?page=2",
-                        "nullable": true
-                    },
-                    "prev": {
-                        "description": "Previous page",
-                        "type": "string",
-                        "format": "uri",
-                        "example": "http://localhost/api/v1/cakes?page=1",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "PaginationMeta": {
-                "description": "Pagination meta",
-                "properties": {
-                    "current_page": {
-                        "description": "Current page",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
-                    },
-                    "last_page": {
-                        "description": "Last page",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 2
-                    },
-                    "from": {
-                        "description": "From",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
-                    },
-                    "to": {
-                        "description": "To",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 2
-                    },
-                    "per_page": {
-                        "description": "Per page",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 2
-                    },
-                    "total": {
-                        "description": "Total",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 4
-                    },
-                    "path": {
-                        "description": "Path",
-                        "type": "string",
-                        "format": "uri",
-                        "example": "http://localhost/api/v1/cakes?page=1"
-                    }
-                },
-                "type": "object"
-            },
-            "CakeUpdateOrStoreRequestPayload": {
-                "description": "Class CakeStoreRequest.",
-                "properties": {
-                    "name": {
-                        "title": "name",
-                        "type": "string",
-                        "format": "string",
-                        "example": "Bolo de Chocolate"
-                    },
-                    "price": {
-                        "title": "price",
-                        "type": "number",
-                        "format": "float",
-                        "example": 5
-                    },
-                    "weight_in_grams": {
-                        "title": "weight_in_grams",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 500
-                    },
-                    "quantity": {
-                        "title": "quantity",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
-                    }
-                },
-                "type": "object"
-            },
-            "CakeSubscriptionStoreRequestPayload": {
-                "properties": {
-                    "email": {
-                        "description": "O e-mail do usuário que solicita o bolo",
-                        "type": "string",
-                        "format": "email"
-                    }
-                },
-                "type": "object"
-            },
             "CakeResource": {
-                "title": "Cake",
-                "description": "Cake model",
+                "title": "CakeResource",
+                "description": "Project resource",
                 "properties": {
-                    "name": {
-                        "title": "name",
-                        "type": "string",
-                        "format": "string",
-                        "example": "Bolo de Chocolate"
-                    },
-                    "price": {
-                        "title": "price",
-                        "type": "number",
-                        "format": "float",
-                        "example": 5
-                    },
-                    "weight_in_grams": {
-                        "title": "weight_in_grams",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 500
-                    },
-                    "quantity": {
-                        "title": "quantity",
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
-                    },
-                    "created_at": {
-                        "title": "created_at",
-                        "type": "string",
-                        "format": "date-time-tz",
-                        "example": "2020-01-01T00:00:00.000000Z"
-                    },
-                    "updated_at": {
-                        "title": "updated_at",
-                        "type": "string",
-                        "format": "date-time-tz",
-                        "example": "2020-01-01T00:00:00.000000Z"
-                    },
-                    "subscriptions": {
+                    "": {
+                        "title": "Data",
+                        "description": "Data wrapper",
                         "type": "array",
-                        "items": {
-                            "allOf": [
-                                {
-                                    "properties": {
-                                        "id": {
-                                            "title": "id",
-                                            "type": "integer",
-                                            "format": "int64",
-                                            "example": 1
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/CakeSubscriptionResource"
-                                }
-                            ]
-                        }
+                        "items": {}
                     }
                 },
-                "type": "object"
-            },
-            "CakeSubscriptionResource": {
-                "title": "CakeSolicitation",
-                "description": "Cake Solicitation Model",
-                "properties": {
-                    "email": {
-                        "description": "Cake Solicitation Email",
-                        "type": "string",
-                        "example": "foo@example.com"
-                    },
-                    "created_at": {
-                        "title": "created_at",
-                        "type": "string",
-                        "format": "date-time-tz",
-                        "example": "2020-01-01T00:00:00.000000Z"
-                    },
-                    "updated_at": {
-                        "title": "updated_at",
-                        "type": "string",
-                        "format": "date-time-tz",
-                        "example": "2020-01-01T00:00:00.000000Z"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "responses": {
-            "ProcessingCakeSubscriptionResponse": {
-                "description": "Solicitação de bolo em processamento.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Mensagem de sucesso.",
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "CakeSubscriptionDeletedResponse": {
-                "description": "Inscrição removida com sucesso.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Mensagem de sucesso.",
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "CakeSubscriptionNotFoundResponse": {
-                "description": "Inscrição não encontrada.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Mensagem de erro.",
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "CakeItemCollectionResponse": {
-                "description": "Lista de bolos",
-                "content": {
-                    "Appplication/json": {
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "allOf": [
-                                            {
-                                                "properties": {
-                                                    "id": {
-                                                        "title": "id",
-                                                        "type": "integer",
-                                                        "format": "int64",
-                                                        "example": 1
-                                                    }
-                                                },
-                                                "type": "object"
-                                            },
-                                            {
-                                                "$ref": "#/components/schemas/CakeResource"
-                                            }
-                                        ]
-                                    }
-                                },
-                                "links": {
-                                    "$ref": "#/components/schemas/PaginationLinks"
-                                },
-                                "meta": {
-                                    "$ref": "#/components/schemas/PaginationMeta"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "CakeItemResponse": {
-                "description": "Bolo",
-                "content": {
-                    "Appplication/json": {
-                        "schema": {
-                            "type": "object",
-                            "allOf": [
-                                {
-                                    "properties": {
-                                        "id": {
-                                            "title": "id",
-                                            "type": "integer",
-                                            "format": "int64",
-                                            "example": 1
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/CakeResource"
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "UnprocessableEntity": {
-                "description": "Erros de validação",
-                "content": {
-                    "Appplication/json": {
-                        "example": {
-                            "message": "The error message",
-                            "errors": {
-                                "field_name": [
-                                    "Validation error message."
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "requestBodies": {
-            "CakeStoreRequest": {
-                "description": "Exemplo de payload para criar um novo bolo.",
-                "required": true,
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/CakeUpdateOrStoreRequestPayload"
-                        },
-                        "example": {
-                            "name": "Bolo de Chocolate",
-                            "weight_in_grams": 1200,
-                            "price": 120,
-                            "quantity": 30
-                        }
-                    }
-                }
-            },
-            "CakeSubscriptionStoreRequest": {
-                "description": "Solicitação de bolo",
-                "required": true,
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/CakeSubscriptionStoreRequestPayload"
-                        },
-                        "example": {
-                            "email": "foo@example.com"
-                        }
-                    }
-                }
-            },
-            "CakeUpdateRequest": {
-                "description": "Exemplo de payload para atualizar um bolo.",
-                "required": true,
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/CakeUpdateOrStoreRequestPayload"
-                        },
-                        "example": {
-                            "name": "Bolo de Chocolate",
-                            "weight_in_grams": 1200,
-                            "price": 120,
-                            "quantity": 30
-                        }
-                    }
+                "type": "object",
+                "xml": {
+                    "name": "CakeResource"
                 }
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Cake",
+            "description": "API Endpoints"
+        }
+    ]
 }

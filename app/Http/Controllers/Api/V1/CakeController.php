@@ -23,15 +23,15 @@ class CakeController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/cakes",
+     *      path="/api/v1/cake",
      *      operationId="getCakesList",
-     *      tags={"Cakes"},
-     *      summary="Get Cakes of projects",
-     *      description="Returns list of Cakes",
+     *      tags={"Cake"},
+     *      summary="Get list of Cake",
+     *      description="Returns list of Cake",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/ProjectResource")
+     *          @OA\JsonContent(ref="#/components/schemas/CakeResource")
      *       ),
      *      @OA\Response(
      *          response=401,
@@ -50,7 +50,7 @@ class CakeController extends Controller
             ->setStatusCode(200);
             
         } catch (\Throwable $th) {
-            return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],404);
+            return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],403);
         }
     }
 

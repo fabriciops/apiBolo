@@ -2,15 +2,26 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Cake;
 use Illuminate\Http\Resources\Json\JsonResource;
-
+/**
+ * @OA\Schema(
+ *     title="CakeResource",
+ *     description="Project resource",
+ *     @OA\Xml(
+ *         name="CakeResource"
+ *     )
+ * )
+ */
 class CakeResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
+     /**
+     * @OA\Property(
+     *     title="Data",
+     *     description="Data wrapper"
+     * )
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @var \App\Models\Cake[]
      */
     public function toArray($request)
     {
