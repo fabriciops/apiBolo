@@ -21,12 +21,6 @@ Esse projeto usa Autenticação JWT
     3 - Rode o seguinte comando para gerar a chave
         
          php artisan key:generate 
-
-    4 - comando para popular o banco de dados
-
-        php artisan db:seed --class=CakeSeeder
-
-        php artisan db:seed --class=CakeEmailSeeder
     
     4 - Para uma melhor experiência rode o comando da chave do JWT
         
@@ -35,6 +29,12 @@ Esse projeto usa Autenticação JWT
     5 - Rode as migration com o seguinte comando
         
          php artisan migrate 
+
+    6 - comando para popular o banco de dados
+
+        php artisan db:seed --class=CakeSeeder
+
+        php artisan db:seed --class=CakeEmailSeeder
 # Caso haja algum problema com a migrate no diretório database há um arquivo sql que basta ser executado diretamente na sua ferramente de banco de dados
     file:  query.sql 
 
@@ -42,12 +42,12 @@ Esse projeto usa Autenticação JWT
 # Comando para rodar o projeto
     php artisan serve
 
-# Você pode enviar no body dessa rota POST, isso se você popular o banco com o sql
+# Se você populou o banco com o arquivo sql, existe um usuário de teste pronto para login
     http://127.0.0.1:8000/api/v1/login
 
     {
-    "email": "fabio.almeida@gmail.com",
-    "password": 12345
+        "email": "fabio.almeida@gmail.com",
+        "password": 12345
     }
 # Você pode criar um novo usuário usando a rota:
     http://127.0.0.1:8000/api/v1/register
@@ -55,10 +55,12 @@ Esse projeto usa Autenticação JWT
     Passando em seu corpo os dados de usuário:
 
     {
-    "name": "fabio Almeida",
-    "email": "fabio.almeida@gmail.com",
-    "password": 12345
+        "name": "fabio Almeida",
+        "email": "fabio.almeida@gmail.com",
+        "password": 12345
     }
+# O arquivo Collection está na raiz do projeto:
+    Checklist.postman_collection.json
 
 
 ## Após logado você receberá um token o qual tem que ser utilizado no Authorization nas rota para a utilização da nossa api

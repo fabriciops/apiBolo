@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "7b81b7b9-81be-410d-8f67-27ac6c5454df",
+		"name": "Checklist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"fabio Almeida\",\r\n  \"email\": \"fabio.almeida@gmail.com\",\r\n  \"password\": 12345\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Barear eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzEyNTA2NjMsImV4cCI6MTY3MTI1NDI2MywibmJmIjoxNjcxMjUwNjYzLCJqdGkiOiI5Z2xEWEkzckl1eHRGeGs4Iiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.qAy7EaSmPzClukhUsI2cTGe33W0UynDmd2ksay6iAO4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"fabio.almeida@gmail.com\",\r\n  \"password\": 12345\r\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validarToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5ODM0NTcsImV4cCI6MTY3Mzk4NzA1NywibmJmIjoxNjczOTgzNDU3LCJqdGkiOiI0eTVJaXdpQmRSM3RTMjRHIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.vs4CMAdjOqPtnJNNkxn_h1nGYVDn44ATUdUDfFrV6MU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzEyNTY0NjEsImV4cCI6MTY3MTI2MDA2MSwibmJmIjoxNjcxMjU2NDYxLCJqdGkiOiJzYmJOVWpTNlNnbVpMc2tmIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.iOtUNgd2kz4DL7qEuhi7m0kfeQZ2XFNu32mAcNFjLl4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM3NDcyNDQsImV4cCI6MTY3Mzc1MDg0NCwibmJmIjoxNjczNzQ3MjQ0LCJqdGkiOiJIanB5d1VZeUZXR3Vlb08yIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Oii-Uq-iIya9RaWmTSAcvryy_FBCQWp22IvsWxdsFf0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/logout",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_cake",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5ODM0NTcsImV4cCI6MTY3Mzk4NzA1NywibmJmIjoxNjczOTgzNDU3LCJqdGkiOiI0eTVJaXdpQmRSM3RTMjRHIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.vs4CMAdjOqPtnJNNkxn_h1nGYVDn44ATUdUDfFrV6MU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"bolo_02_azulMarinho\",\n  \"price\": 1.25,\n  \"weight\": 20,\n  \"quantity\": 10\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/cake/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cake",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show_all_cakes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5Nzg0NjEsImV4cCI6MTY3Mzk4MjA2MSwibmJmIjoxNjczOTc4NDYxLCJqdGkiOiJpaUpMclF2SkxmeHVwMG15Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.d-_tPE-AKGRQBd_f14uqtI1EiGT72e3A5OGxrYsVS3A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8001/api/v1/cake/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"v1",
+						"cake",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show_cake",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5MTE0NzUsImV4cCI6MTY3MzkxNTA3NSwibmJmIjoxNjczOTExNDc1LCJqdGkiOiJxU2ZZbFh4bVpsZVl4dmkzIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.2BC7gwDXzJOAuG_ex3cE35ifEYo3BDAHbAqcQr3Kbww",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/cake/44",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cake",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_cake",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5ODM0NTcsImV4cCI6MTY3Mzk4NzA1NywibmJmIjoxNjczOTgzNDU3LCJqdGkiOiI0eTVJaXdpQmRSM3RTMjRHIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.vs4CMAdjOqPtnJNNkxn_h1nGYVDn44ATUdUDfFrV6MU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"bolo_update_teste\",\n  \"price\": 1,\n  \"weight\": 3,\n  \"quantity\":8\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/cake/26",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cake",
+						"26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "email_inscricao",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5ODM0NTcsImV4cCI6MTY3Mzk4NzA1NywibmJmIjoxNjczOTgzNDU3LCJqdGkiOiI0eTVJaXdpQmRSM3RTMjRHIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.vs4CMAdjOqPtnJNNkxn_h1nGYVDn44ATUdUDfFrV6MU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/subscriptionCake?email=fabio.marinho@gmail.com&bolo_id=88",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"subscriptionCake"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "fabio.marinho@gmail.com"
+						},
+						{
+							"key": "bolo_id",
+							"value": "88"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "email_deletar_inscricao",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5MjIwODMsImV4cCI6MTY3MzkyNTY4MywibmJmIjoxNjczOTIyMDgzLCJqdGkiOiJ5ZVZpWkJVMmN2NTB0Y00yIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.vWNGewa4OczgHYyvKI2ji-vPKqWgj_VEzCy8UIoaZj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/subscriptionCake/44",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"subscriptionCake",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cake_Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM5MTY2NjksImV4cCI6MTY3MzkyMDI2OSwibmJmIjoxNjczOTE2NjY5LCJqdGkiOiJrUmZ5czF4ZWVPN1IyVVREIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.T6re5bJKGt-YKHaCO4OrUEgafXR5qi-T621cx_VT67o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2NzM4MTEzOTAsImV4cCI6MTY3MzgxNDk5MCwibmJmIjoxNjczODExMzkwLCJqdGkiOiJrWWpoQlpIWHY5ckZiaXFiIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FgxJHEBU763dFo60Eqhd2HKHdegUfzRUIav-eve2yZY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/cake/40",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cake",
+						"40"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "livroId",
+			"value": "{livroId}"
+		},
+		{
+			"key": "token",
+			"value": "{token}"
+		}
+	]
+}
