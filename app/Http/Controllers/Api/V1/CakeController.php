@@ -22,13 +22,36 @@ use Illuminate\Http\JsonResponse;
 class CakeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/cakes",
+     *      operationId="getCakesList",
+     *      tags={"Cakes"},
+     *      summary="Get Cakes of projects",
+     *      description="Returns list of Cakes",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/ProjectResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
      */
     public function index()
     {
-        return CakeResource::collection(Cake::with('subscriptionsNotification')->paginate(20));
+        try {
+            return CakeResource::collection(Cake::with('subscriptionsNotification')->paginate(20))->response()
+            ->setStatusCode(200);
+            
+        } catch (\Throwable $th) {
+            return response()->json(['mensagem' => 'Você deixou de enviar alguma informação, favor verifique os dados enviados'],404);
+        }
     }
 
     /**
