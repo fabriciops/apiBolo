@@ -7,7 +7,7 @@ Esse projeto usa Autenticação JWT
 # Iniciar o projeto
     1 - Ao baixar o projeto rode o seguinte comando
     
-        ** composer install **
+         composer install 
 
     2 - É necessário a criação de um banco de dados
 
@@ -15,7 +15,7 @@ Esse projeto usa Autenticação JWT
 
     3 - Rode o seguinte comando para gerar a chave
         
-        ** php artisan key:generate **
+         php artisan key:generate 
 
     4 - comando para popular o banco de dados
 
@@ -25,19 +25,21 @@ Esse projeto usa Autenticação JWT
     
     4 - Para uma melhor experiência rode o comando da chave do JWT
         
-        ** php artisan jwt:secret **
+         php artisan jwt:secret 
 
     5 - Rode as migration com o seguinte comando
         
-        ** php artisan migrate **
+         php artisan migrate 
 # Caso haja algum problema com a migrate no diretório database há um arquivo sql que basta ser executado diretamente na sua ferramente de banco de dados
-    file: ** query.sql **
+    file:  query.sql 
 
     
 # Comando para rodar o projeto
     php artisan serve
 
-# Você pode enviar no body dessa rota POST
+# Você pode enviar no body dessa rota POST, isso se você popular o banco com o sql
+    http://127.0.0.1:8000/api/v1/login
+
     {
     "email": "fabio.almeida@gmail.com",
     "password": 12345
@@ -60,15 +62,13 @@ Esse projeto usa Autenticação JWT
 # Capacidades não atendidas.
 * Tive problemas com permissão do docker em meu ambiente, terei de explorar. Breve verifico e subo um yml
 
-## Capacidades a ser mais exploradas.
- * Preciso explorar mais os testes quando envolvido a autenticação JWT
 ## Executar filas
 php artisan queue:work
 
 ## Testes
     /tests
 
-    ** Comando para executar os testes ** 
+     Comando para executar os testes  
     
     php artisan test --filter {method}
 
